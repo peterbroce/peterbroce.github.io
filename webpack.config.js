@@ -1,11 +1,16 @@
 let path = require("path");
 let HtmlWebpackPlugin = require("html-webpack-plugin");
+let vueLoaderPlugin = require('vue-loader/lib/plugin');
+
+function resolve(dir) {
+  return path.resolve(__dirname, dir);
+}
 
 module.exports = {
   mode: "production",
   entry: "./src/main.js",
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: resolve("./dist"),
     filename: "[hash:8].js",
   },
   resolve: {
@@ -15,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader",
           options: {
@@ -29,12 +34,15 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        use: ["vue-loader"],
+        loader: 'vue-loader',
       },
       {
-        test: /\.(css|sass|less)$/,
+        test: /\.css$/,
         exclude: /node_modules/,
-        loader: ["vue-style-loader", "style-loader", "css-loader"],
+        loader: [
+          "style-loader", 
+          "css-loader"
+        ],
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -44,13 +52,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "./index.html"),
-      filePath: path.resolve(__dirname, "dist/index.html"),
+      template: resolve("./index.html"),
+      filePath: resolve("dist/index.html"),
     }),
+    new vueLoaderPlugin()
   ],
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "dist"),
+      directory: resolve("dist"),
     },
     port: 8000,
     hot: true,

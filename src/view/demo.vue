@@ -9,3 +9,9 @@ export default {
     name: "Demo"
 }
 </script>
+
+<style scoped>
+  h1 {
+    color: #ccc;
+  }
+</style>
