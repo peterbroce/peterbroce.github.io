@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "serve": "vue-cli-service serve"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,11 @@
   },
   "homepage": "https://github.com/peterbroce/peterbroce.github.io#readme",
   "dependencies": {
-    "vue": "^2.7.10"
+    "vue": "^3.2.39"
   },
   "devDependencies": {
+    "@vue/cli-service": "^4.5.13",
+    "@vue/compiler-sfc": "^3.2.39",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -33,7 +36,7 @@
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "vue-loader": "^15.7.0",
-    "vue-router": "^3.6.5",
+    "vue-router": "^4.1.5",
     "vue-style-loader": "^4.1.3",
     "vue-template-compiler": "^2.7.10",
     "webpack": "^4.46.0",

@@ -1,7 +1,9 @@
-import Vue from "vue";
-import Router from "vue-router";
+// import Vue from "vue";
+// import Router from "vue-router";
 
-Vue.use(Router);
+// Vue.use(Router);
+
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
     {
@@ -16,9 +18,14 @@ const routes = [
     }
 ]
 
-const router = new Router({
-    mode: "hash",
-    routes
-});
+// const router = new Router({
+    //     mode: "hash",
+    //     routes
+    // });
+    
+    const router = createRouter({
+        history: createWebHashHistory(),
+        routes
+    });
 
 export default router;
